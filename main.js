@@ -5,8 +5,7 @@ const ulList = document.querySelector('ul')
 
 const addInput = document.querySelector('.add input')
 const searchInput = document.querySelector('.add search')
-let classNum = 0
-// const liList
+
 const tasks = []
 
 const addindTask = (e) => {
@@ -42,23 +41,14 @@ const removeTask = (e) => {
 
 const searchTask = (e) => {
     e.preventDefault()
-    console.log('lol');
-
-    const searchedTask = tasks.filter(tsk => {
-
-        tsk.contains == addInput.value.toLowerCase()
-        showList()
-
-    });
-
-
-
+    const inputValue = e.target.value.toLowerCase()
+    let taskArray = [...tasks]
+    taskArray = taskArray.filter((li) => li.textContent.toLowerCase().includes(inputValue))
+    console.log(taskArray);
+    ulList.textContent = ''
+    taskArray.forEach(li => ulList.appendChild(li))
 }
 
-
-
-
-// document.addEventListener('click', removeTask)
 
 formAdd.addEventListener('submit', addindTask)
 formSearch.addEventListener('input', searchTask)
